@@ -8,10 +8,17 @@ from .serializers import TodolistSerializer
 
 
 class TodolistViewSet(viewsets.ModelViewSet):
-    queryset = Todolist.objects.all()
+    # queryset = Todolist.objects.all()
     serializer_class = TodolistSerializer
 
 
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+
+        if not pk:
+            return Todolist.objects.all()[:3]
+
+        return Todolist.objects.filter(pk=pk)
 
 
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Todolist(models.Model):
@@ -7,6 +8,7 @@ class Todolist(models.Model):
     priority = models.IntegerField(default=3, verbose_name='Priority')
     time_create = models.TimeField(auto_now=True, verbose_name='Time Create')
     time_update = models.TimeField(auto_now_add=True, verbose_name='Time Update')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User')
     is_published = models.BooleanField(default=True, verbose_name='Published')
 
     def __str__(self):

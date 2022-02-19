@@ -4,7 +4,7 @@ from rest_framework import routers
 from .views import TodoListView, TodolistAPIList, TodolistAPIUpdate, TodolistAPIDetail, TodolistViewSet
 
 router = routers.SimpleRouter()
-router.register(r'todolist', TodolistViewSet)
+router.register(r'todolist', TodolistViewSet, basename='todolist')
 
 urlpatterns = [
     # path('', TodoListView.as_view()),
